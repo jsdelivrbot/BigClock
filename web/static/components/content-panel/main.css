@@ -1,0 +1,69 @@
+.ContentPanel {
+	width: 100%;
+	height: 100%;
+
+	background-color: #FFFFFC;
+	color: #969685;
+}
+
+.ContentPanel.darken {
+	background-color: #333;
+	color: #FFFFFC;
+}
+
+.ContentPanel
+.clock {
+	width: 100%;
+	text-align: center;
+}
+
+.ContentPanel
+.clock-body {
+	padding: 10px 20px;
+	border-radius: 3px;
+}
+
+.ContentPanel
+.headings {
+	display: inline-block;
+	width: 100%;
+}
+
+.ContentPanel
+.headings 
+span {
+	font-size: 2em;
+	position: absolute;
+}
+
+.ContentPanel
+.headings
+.hour {
+	left: 255px;
+}
+
+.ContentPanel
+.headings
+.minutes {
+	left: 510px;
+}
+
+.ContentPanel
+.headings
+.seconds {
+	left: 775px;
+}
+
+.ContentPanel
+.headings
+.period {
+	left: 1055px;
+}
+
+.ContentPanel
+.time {
+	display: inline-block;
+	width: 100%;
+
+	font-size: 10em;
+}

@@ -1,0 +1,17 @@
+<!-- ContentPanel -->
+<div class="ContentPanel noselect transition-base" data-bind="css: { darken: dim_face }, click: toggle_dimmer">
+	<!-- Content -->
+	<div class="clock">
+		<span class="clock-body">
+			<span class="headings">
+				<span class="hour">HOURS</span>
+				<span class="minutes">MINUTES</span>
+				<span class="seconds">SECONDS</span>
+				<span class="period">PERIOD</span>
+			</span>
+			<span class="time" data-bind="text:current_time"></span>
+		</span>
+	</div>
+</div>
+
+<div data-bind="template:{ afterRender: $component.init.bind($component) }"></div>
