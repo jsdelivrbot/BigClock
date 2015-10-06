@@ -1,20 +1,23 @@
 ({
     baseUrl: "../../static",
     paths: {
-        'knockout':     'bower_components/knockout/dist/knockout',
-        'jquery':       'bower_components/jquery/dist/jquery.min',
-        'notifyjs':     'bower_components/notifyjs/dist/notify.min', 
-        'text':         'bower_components/requirejs-text/text' 
+        'text':               'bower_components/text/text',
+        'augment':            'bower_components/augment.js/augment',
+        'knockout':           'bower_components/knockout/dist/knockout',
+        'jquery':             'bower_components/jquery/dist/jquery.min',
+        'moment':             'bower_components/moment/min/moment.min' 
     },
     shim: {
         'notifyjs': {
             deps: ['jquery']
-        },
-        'datatables': {
-            deps: ['jquery']
         }
     },
-    packages:[],
+    packages:[
+        {
+            name: 'content-panel',
+            location: 'components/content-panel'
+        }
+    ],
     name: "main-debug",
     out: "../main-built.js"
 })

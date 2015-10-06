@@ -54,7 +54,9 @@ define([
 		};
 
 		ContentPanel.prototype.get_time = function() {
-			this.current_time( moment().format("h:mm:ss a").toUpperCase() );
+			var now = moment().format("h:mm:ss a").toUpperCase();
+			document.title = now;
+			this.current_time(now);
 		};
 
 		ContentPanel.prototype.toggle_dimmer = function() {

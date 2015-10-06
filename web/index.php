@@ -2,7 +2,7 @@
 
 /* Debug Vars
 ———————————————————————————————————————*/
-$mode = 'debug';
+$mode = 'built';
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $mode = 'debug';
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<!-- favicon -->
-		<link rel="icon" type="image/png" href="static/images/favicon.ico"/>
+		<link rel="icon" type="image/png" href="static/images/clock.ico"/>
 
 		<!-- font imports -->
 		<style type="text/css">
