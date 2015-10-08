@@ -45,12 +45,6 @@ body {
 
 h1,h2,h3,h4,.title {}
 
-.logo-icon {
-    display: inline-block;
-    width: 22px;
-    height: 12px;
-}
-
 button.button-primary, a.button-primary, .button.button-primary,
 button.button-primary:focus, a.button-primary:focus, .button.button-primary:focus {
     background-color: #040404;

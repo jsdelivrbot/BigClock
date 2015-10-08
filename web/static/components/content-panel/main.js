@@ -9,16 +9,60 @@ define([
 		function ContentPanel(params){
 			this.app = params.app;
 
-			this.current_time = ko.observable();
-			this.dim_face     = ko.observable(false);
-
+			// window vars
 			window.moment = moment;
+			window.panel  = this;
+
+			// clock
+			this.current_time = ko.observable( moment() );
+
+			// dimmer vars
+			this.dim_face     = ko.observable(false);
+			this.morning      = ko.observable();
+			this.evening  	  = ko.observable();
+
+			// settings vars
+			this.settings_visible   = ko.observable(false);
+			this.settings_hours     = ko.observable();
+			this.settings_minutes   = ko.observable();
+
+			// update dimmer hours
+			this.settings_hours.subscribe(function(value){
+				this.set_evening( value, this.settings_minutes() );
+			},this);
+			this.settings_minutes.subscribe(function(value){
+				this.set_evening( this.settings_hours(), value );
+			},this);
+
+			// update document title
+			this.current_time.subscribe(function(value){
+				document.title = value.format("hh:mm:ss a").toUpperCase();
+			},this);
+
+			// clock units
+			this.hours   = ko.computed(function(){
+				return this.current_time().format("hh");
+			},this);
+			this.minutes = ko.computed(function(){
+				return this.current_time().format("mm");
+			},this);
+			this.seconds = ko.computed(function(){
+				return this.current_time().format("ss");
+			},this);
+			this.period  = ko.computed(function(){
+				return this.current_time().format("a").toUpperCase();
+			},this);
 		}
 
 		ContentPanel.prototype.init = function() {
 			// start clock
-            this.get_time();
             setInterval(this.get_time.bind(this), 1000);
+
+            // set default dimmer times
+			this.morning( moment().hour(6).minutes(0).seconds(0) );
+			this.evening( moment().hour(20).minutes(0).seconds(0) );
+			this.settings_hours(20);
+			this.settings_minutes(0);
 
 			// setup binding for window resize event
             $(window).bind( "resize."+this.panel_name, this.set_heights.bind(this) );
@@ -28,8 +72,8 @@ define([
             // stop loading screen
 	        this.app.loading(false);
 
-            // evaluate time of day
-            if( moment().hours() > 20 ) this.dim_face(true);
+            // evaluate time of day on load after hiding loading screen
+            if( moment().hours() > 20 || moment().hours() < 6 ) this.dim_face(true);
 		};
 
 		ContentPanel.prototype.dispose = function() {
@@ -46,7 +90,7 @@ define([
                 panel_height   = panel.outerHeight(),
                 window_height  = $(window).height();
 
-            var face        = $(".clock"),
+            var face        = $(".clock-body"),
             	face_height = face.height(),
             	padding = (window_height/2) - (face_height/2);
 
@@ -54,12 +98,32 @@ define([
 		};
 
 		ContentPanel.prototype.get_time = function() {
-			var now = moment().format("hh:mm:ss a").toUpperCase();
-			document.title = now;
-			this.current_time(now);
+			// set time
+			this.current_time( moment() );
+
+			// re-evaluate time for diming screen
+            if( this.current_time().isSame(this.morning(),'seconds') ) {
+            	this.dim_face(false);
+            }
+            else if( this.current_time().isSame(this.evening(),'seconds') ) {
+            	this.dim_face(true);
+            }
+		};
+
+		ContentPanel.prototype.set_morning = function(hour,minutes) {
+			this.morning().hour(hour).minutes(minutes);
+		};
+
+		ContentPanel.prototype.set_evening = function(hour,minutes) {
+			this.evening().hour(hour).minutes(minutes);
+		};
+
+		ContentPanel.prototype.toggle_settings = function() {
+			this.settings_visible( !this.settings_visible() );
 		};
 
 		ContentPanel.prototype.toggle_dimmer = function() {
+			this.settings_visible(false);
 			this.dim_face( !this.dim_face() );
 		};
 
