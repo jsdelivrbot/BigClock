@@ -559,39 +559,37 @@ hr {
 .settings
 .settings-container {
 	position: relative;
-	right: 160px;
+	top: -50px;
+	right: 230px;
+	width: 210px;
 	margin: 0px;
 }
 .ContentPanel
 .settings
 .tag {
-	position: relative;
-    right: -160px;
+	position: absolute;
+	top: 10px;
+    right: -10px;
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 0 0 10px 20px;
-	border-color: transparent transparent #969685 transparent;
+	border-width: 10px 0 10px 10px;
+	border-color: transparent transparent transparent #969685 ;
 }
 .ContentPanel
 .settings
 .tag.dim-tag {
-	border-color: transparent transparent #FFFFFC transparent;
+	border-color: transparent transparent transparent #FFFFFC;
 }
 .ContentPanel
 .settings
 .settings-panel {
-	width: 150px;
 	padding: 15px;
+	margin: 0px;
 	background-color: #969685;
 	color: #FFFFFC;
 	text-align: center;
-	-webkit-border-radius: 3px;
-	-webkit-border-top-right-radius: 0;
-	   -moz-border-radius: 3px;
-	   -moz-border-radius-topright: 0;
-			border-radius: 3px;
-			border-top-right-radius: 0;
+	border-radius: 3px;
 }
 .ContentPanel
 .settings
@@ -600,20 +598,64 @@ hr {
 	color: #333;
 }
 .ContentPanel
-.settings
-.settings-panel
-input {
+.settings .settings-panel
+table {
 	margin: 0px;
-	text-align: center;
-	background-color: #FFFFFC;
-	color: #969685;
 }
 .ContentPanel
-.settings
-.settings-panel
-input.dim-input {
-	background-color: #5C5C5C;
+.settings .settings-panel
+th, td {
+    padding: 0px 10px;
+    text-align: center;
+    border-bottom: 0px;
+}
+.ContentPanel
+.settings .settings-panel
+th {
+	padding-bottom: 10px;
+}
+th:first-child, td:first-child {
+    padding-left: 5px;
+    padding-right: 15px; 
+}
+.ContentPanel
+.settings .settings-panel
+tr.space-under > td {
+	padding-bottom: 10px;
+}
+.ContentPanel
+.settings .settings-panel table
+.fa {
+    position: relative;
+	top: 5px;
+    font-size: 20px;
+}
+.ContentPanel
+.settings .settings-panel
+label {
+	margin: 0px;
+}
+.ContentPanel
+.settings .settings-panel
+input {
+	text-align: center;
+	height: 25px;
+	width: 50px;
+	margin: 0px;
+	padding: 0px 0px 0px 10px;
+	border: 0px;
+	border-radius: 0px;
+	background: transparent; 
+	
+	
 	color: #FFFFFC;
+	border-bottom: 2px solid #FFFFFC;
+}
+.ContentPanel
+.settings .settings-panel
+input.dim-input {
+	color: #5C5C5C;
+	border-color: #5C5C5C;
 }
 body {
     position: absolute;

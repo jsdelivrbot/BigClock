@@ -22,16 +22,26 @@ define([
 			this.evening  	  = ko.observable();
 
 			// settings vars
-			this.settings_visible   = ko.observable(false);
-			this.settings_hours     = ko.observable();
-			this.settings_minutes   = ko.observable();
+			this.settings_visible         = ko.observable(false);
+			this.settings_day_hours       = ko.observable();
+			this.settings_day_minutes     = ko.observable();
+			this.settings_night_hours     = ko.observable();
+			this.settings_night_minutes   = ko.observable();
 
-			// update dimmer hours
-			this.settings_hours.subscribe(function(value){
-				this.set_evening( value, this.settings_minutes() );
+			// update morning dimmer hours
+			this.settings_day_hours.subscribe(function(value){
+				this.set_morning( value, this.settings_day_minutes() );
 			},this);
-			this.settings_minutes.subscribe(function(value){
-				this.set_evening( this.settings_hours(), value );
+			this.settings_day_minutes.subscribe(function(value){
+				this.set_morning( this.settings_day_hours(), value );
+			},this);
+
+			// update evening dimmer hours
+			this.settings_night_hours.subscribe(function(value){
+				this.set_evening( value, this.settings_night_minutes() );
+			},this);
+			this.settings_night_minutes.subscribe(function(value){
+				this.set_evening( this.settings_night_hours(), value );
 			},this);
 
 			// update document title
@@ -58,11 +68,14 @@ define([
 			// start clock
             setInterval(this.get_time.bind(this), 1000);
 
-            // set default dimmer times
-			this.morning( moment().hour(6).minutes(0).seconds(0) );
+            // set default evening dimmer
 			this.evening( moment().hour(20).minutes(0).seconds(0) );
-			this.settings_hours(20);
-			this.settings_minutes(0);
+			this.settings_night_hours(20);
+			this.settings_night_minutes(0);
+			// set default morning dimmer
+			this.morning( moment().hour(6).minutes(0).seconds(0) );
+			this.settings_day_hours(6);
+			this.settings_day_minutes(0);
 
 			// setup binding for window resize event
             $(window).bind( "resize."+this.panel_name, this.set_heights.bind(this) );
@@ -122,7 +135,7 @@ define([
 			this.settings_visible( !this.settings_visible() );
 		};
 
-		ContentPanel.prototype.toggle_dimmer = function() {
+		ContentPanel.prototype.toggle_dimmer = function(value) {
 			this.settings_visible(false);
 			this.dim_face( !this.dim_face() );
 		};
