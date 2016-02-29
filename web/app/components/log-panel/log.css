@@ -1,0 +1,189 @@
+.LogPanel {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+
+    text-align: center;
+    cursor: pointer;
+    font-size: 0;
+}
+
+.LogPanel
+.data-display,
+.LogPanel
+.entry-form {
+    display: inline-block;
+    font-size: 0;
+    margin-bottom: 15px;
+    border: 1px solid #D1D1D1;
+
+    background-color: #E1E1E1;
+    color: #5C5C5C;
+    text-shadow: none;
+
+    -webkit-box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.1);
+       -moz-box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.1);
+}
+
+.LogPanel.dim
+.data-display,
+.LogPanel.dim
+.entry-form {
+    border: 1px solid #2B2B2B;
+
+    background-color: #404040;
+    color: #BFBFBF;
+}
+
+.LogPanel
+.data-display *,
+.LogPanel
+.entry-form * {
+    font-size: 18px;
+}
+
+.LogPanel
+.item-submit,
+.LogPanel
+.item-entry {
+    display: inline-block;
+    vertical-align: middle;
+
+    margin: 0px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+
+    border: 0px;
+    border-radius: 0px;
+
+    background: transparent;
+
+    font-family: inherit;
+}
+
+.LogPanel
+.data-display {
+    max-height: 350px;
+    width: 1047px;
+    overflow: auto;
+
+    box-sizing: border-box;
+}
+
+/* Scrollbar Normal */
+.LogPanel .data-display::-webkit-scrollbar             { width: 10px;                         }
+.LogPanel .data-display::-webkit-scrollbar-thumb       { background:#D1D1D1; border-radius: 0;}
+.LogPanel .data-display::-webkit-scrollbar-thumb:hover { background:#D1D1D1;                  }
+.LogPanel .data-display::-webkit-scrollbar-track       { background:transparent;              }
+
+/* Scrollbar Dim */
+.LogPanel .data-display::-webkit-scrollbar             { width: 10px;                         }
+.LogPanel .data-display::-webkit-scrollbar-thumb       { background:#5C5C5C; border-radius: 0;}
+.LogPanel .data-display::-webkit-scrollbar-thumb:hover { background:#5C5C5C;                  }
+.LogPanel .data-display::-webkit-scrollbar-track       { background:transparent;              }
+
+.LogPanel
+.data-display
+.data-points {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.LogPanel
+.data-display .data-points
+.point {
+    width: 100%;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(4,4,4,0.05);
+    text-align: left;
+}
+
+.LogPanel.dim
+.data-display .data-points
+.point {
+    border-bottom: 1px solid rgba(209,209,209,0.05);
+}
+
+.LogPanel
+.data-display .data-points
+.point:last-child {
+    padding-bottom: 0px;
+    border-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.LogPanel
+.data-display .data-points .point
+.stamp-content {
+    display: inline-block;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+.LogPanel
+.data-display .data-points .point
+.stamp-point {
+    float: right;
+    font-size: 0px;
+}
+
+.LogPanel
+.data-display .data-points .point .stamp-point
+.stamp-point-data,
+.LogPanel
+.data-display .data-points .point .stamp-point
+.stamp-point-remove {
+    width: 400px;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    padding: 6px 10px;
+    box-sizing: border-box;
+
+    font-size: 18px;
+}
+
+.LogPanel
+.data-display .data-points .point .stamp-point
+.stamp-point-remove {
+    width: 45px;
+    text-align: center;
+}
+
+.LogPanel
+.item-entry {
+    width: 400px;
+}
+
+.LogPanel
+.item-entry:first-child {
+    width: 600px;
+}
+
+.LogPanel
+.item-submit {
+    width: 45px;
+    padding: 6px 10px;
+    font-size: 0px;
+    color: inherit;
+
+    -webkit-transition-duration: 0.2s; /* Safari */
+            transition-duration: 0.2s;
+}
+
+.LogPanel
+.item-submit:hover {
+    background-color: #D1D1D1;
+    color: #888;
+}
+
+.LogPanel.dim
+.item-submit:hover {
+    background-color: #FFFFFC;
+    color: #5C5C5C;
+}

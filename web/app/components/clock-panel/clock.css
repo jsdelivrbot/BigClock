@@ -1,0 +1,39 @@
+.ClockPanel {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.ClockPanel
+.clock-body {
+    max-height: 100%;
+	width: 100%;
+
+	padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.ClockPanel
+.unit {
+	display: inline-block;
+}
+
+.ClockPanel
+.title {
+	font-size: 2em;
+}
+
+.ClockPanel
+.value,
+.ClockPanel
+.separator {
+	font-size: 10em;
+	line-height: 1em;
+}
+
+.ClockPanel
+.separator {
+	padding-left: 5px;
+	padding-right: 5px;
+    box-sizing: border-box;
+}

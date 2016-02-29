@@ -1,0 +1,155 @@
+/* ---- Colours ---- */
+
+/* Primary
+   #FFFFFC
+*/
+
+/* Secondary
+   #969685
+*/
+
+/* Highlight
+   #5C5C54
+*/
+
+
+/* ---- Font Imports ---- */
+
+/*
+@import url(https://fonts.googleapis.com/css?family=PT+Mono);
+*/
+
+
+/* ---- General CSS ---- */
+
+body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'PT Mono', sans-serif;
+
+    overflow: hidden;
+    background: #FFFFFC;
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,.title {}
+
+button.button-primary, a.button-primary, .button.button-primary,
+button.button-primary:focus, a.button-primary:focus, .button.button-primary:focus {
+    background-color: #040404;
+        border-color: #040404;
+}
+
+button.button-primary:hover, a.button-primary:hover, .button.button-primary:hover,
+button.button-primary:focus, a.button-primary:focus, .button.button-primary:focus {
+    background-color: #424242;
+        border-color: #424242;
+}
+
+button.button-primary:active, a.button-primary:active, .button.button-primary:active {
+    -webkit-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+       -moz-box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+            box-shadow: inset 5px 5px 30px 5px rgba(0,0,0,0.3);
+}
+
+input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus,
+input[type="text"]:focus, input[type="tel"]:focus, input[type="url"]:focus,
+input[type="password"]:focus, textarea:focus, select:focus {
+    border-color: #424242;
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+#Main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#Main
+.content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    cursor: pointer;
+
+	background-color: #FFFFFC;
+	/*color: #969685;*/
+
+	/* Shadows are visible under slightly transparent text color */
+    color: rgba(150, 150, 133, 0.8);
+    text-shadow: 1px 4px 6px #FFFFFC, 0 0 0 #000, 1px 4px 6px #FFFFFC;
+}
+
+#Main
+.content.dim {
+	background-color: #333;
+	/*color: #FFFFFC;*/
+
+    /* Shadows are visible under slightly transparent text color */
+    color: rgba(255, 255, 252, 0.8);
+    text-shadow: 1px 4px 6px #333, 0 0 0 #333, 1px 4px 6px #333;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.transition-base {
+    -webkit-transition: 1s;
+       -moz-transition: 1s;
+        -ms-transition: 1s;
+         -o-transition: 1s;
+            transition: 1s;
+}
+
+
+/* ---- Media Queries ---- */
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+
+/** ie10mobile.css **/
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}

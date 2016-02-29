@@ -1,0 +1,153 @@
+.SettingsPanel {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+
+    width: 45px;
+    height: 45px;
+
+    text-shadow: none;
+}
+
+.SettingsPanel
+.logo {
+	position: relative;
+	top: 0px;
+	right: 0px;
+
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+
+    cursor: pointer;
+}
+
+.SettingsPanel
+.dim-svg {
+	fill: #FFFFFC;
+}
+
+.SettingsPanel
+.settings-container {
+	position: relative;
+	top: -50px;
+	right: 230px;
+
+	width: 210px;
+	margin: 0px;
+}
+
+.SettingsPanel
+.tag {
+	position: absolute;
+	top: 10px;
+    right: -10px;
+
+	width: 0;
+	height: 0;
+
+	border-style: solid;
+	border-width: 10px 0 10px 10px;
+	border-color: transparent transparent transparent #969685 ;
+}
+
+.SettingsPanel
+.tag.dim-tag {
+	border-color: transparent transparent transparent #FFFFFC;
+}
+
+.SettingsPanel
+.settings-content {
+	padding: 15px;
+	margin: 0px;
+
+	background-color: #969685;
+	color: #FFFFFC;
+
+	text-align: center;
+
+	/*border-radius: 3px;*/
+}
+
+.SettingsPanel
+.dim-settings {
+	background-color: #FFFFFC;
+	color: #333;
+}
+
+.SettingsPanel
+.settings-content
+table {
+	margin: 0px;
+}
+
+.SettingsPanel
+.settings-content th,
+.SettingsPanel
+.settings-content td {
+    padding: 0px 10px;
+    text-align: center;
+    border-bottom: 0px;
+}
+
+.SettingsPanel
+.settings-content th {
+	padding-bottom: 10px;
+}
+
+.SettingsPanel
+.settings-content th:first-child,
+.SettingsPanel
+.settings-content td:first-child {
+    padding-left: 5px;
+    padding-right: 15px;
+}
+
+.SettingsPanel
+.settings-content
+tr.space-under > td {
+	padding-bottom: 10px;
+}
+
+.SettingsPanel
+.settings-content table
+.fa {
+    position: relative;
+	top: 5px;
+    font-size: 20px;
+}
+
+.SettingsPanel
+.settings-content
+label {
+	margin: 0px;
+}
+
+.SettingsPanel
+.settings-content
+input {
+	text-align: center;
+	height: 25px;
+	width: 50px;
+
+	margin: 0px;
+	padding: 0px 0px 0px 10px;
+
+	border: 0px;
+	border-radius: 0px;
+
+	background: transparent;
+
+	/*background-color: #FFFFFC;*/
+	/*color: #969685;*/
+
+	color: #FFFFFC;
+	border-bottom: 2px solid #FFFFFC;
+}
+
+.SettingsPanel
+.settings-content
+input.dim-input {
+	color: #5C5C5C;
+	border-color: #5C5C5C;
+}
