@@ -1,5 +1,5 @@
-<div class="ClockPanel noselect" v-on:click="toggle_dimmer">
-	<div class="clock-body-digital" v-if="mode == 'digital'">
+<div class="ClockPanel noselect" v-on:click.self="toggle_dimmer">
+	<div class="clock-body-digital" v-if="settings.mode == 'digital'">
 		<div class="unit hours">
 			<div class="inset-text title">HOURS</div>
 			<div class="inset-text value">
@@ -28,7 +28,7 @@
             </div>
 		</div>
 	</div>
-    <div class="clock-body-analog" v-if="mode == 'analog'" v-on:click="toggle_dimmer">
+    <div class="clock-body-analog" v-if="settings.mode == 'analog'" v-on:click="toggle_dimmer">
         <div class="clock-face transition-base" v-bind:style="{ borderColor: secondary }">
             <div class="hand"><div class="marker marker-one   transition-base" v-bind:style="{ background:  secondary }"></div></div>
             <div class="hand"><div class="marker marker-two   transition-base" v-bind:style="{ background:  secondary }"></div></div>

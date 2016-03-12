@@ -1,3 +1,9 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
 [v-cloak] { display:none;  }
 
 .spinner { display:none; }

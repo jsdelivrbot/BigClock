@@ -21,8 +21,7 @@
     height: 40%;
 
     box-sizing: border-box;
-    padding: 10px 15px;
-    border: 5px solid #bbb;
+    border: 5px solid #BBB;
 
     background: #FFFFFC;
     color: #333;
@@ -34,11 +33,15 @@
             box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.2);
 }
 
+
+/* SECTION STYLES */
+
 .SettingsPanel
 .settings-container
 .settings-subsection {
+    position: relative;
     display: inline-block;
-    width: 33.33%;
+    width: 50%;
     height: 100%;
     font-size: 18px;
     text-align: center;
@@ -54,25 +57,240 @@
     border-right: none;
 }
 
-.colours-section {
-    padding-top: 15px;
+.SettingsPanel
+.settings-container
+.settings-subsection
+.section-title {
+    display: inline-block;
+    margin-top: 3px;
 }
 
-.sunrise-icon,
-.sunset-icon {
+.SettingsPanel
+.settings-container
+.settings-subsection .section-title
+.section-title-text {
+    background: #BBB;
+    color: #FFFFFC;
+
+    box-sizing: border-box;
+    padding: 3px 6px;
+}
+
+
+/* SPLIT SECTION STYLES */
+
+.split-section {
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(50%,#FFFFFC), color-stop(50%,#333));
+    background: -webkit-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:    -moz-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:     -ms-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:      -o-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:         linear-gradient(135deg, #FFFFFC 50%, #333 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFC', endColorstr='#333',GradientType=1 );
+}
+
+.SettingsPanel
+.split-subsection {
     position: absolute;
-    top: 10px;
-    display: block;
+    padding: 10px;
+    min-width: 30%;
 }
 
+.SettingsPanel
+.split-subsection.section-left {
+    top: 30px;
+    left: 30px;
+    text-align: left;
+}
+
+.SettingsPanel
+.split-subsection.section-right {
+    bottom: 30px;
+    right: 30px;
+    text-align: right;
+}
+
+.SettingsPanel
+.sunrise-group,
+.SettingsPanel
+.sunset-group {
+    display: inline-block;
+    vertical-align: middle;
+    width: 75px;
+    text-align: center;
+}
+
+.SettingsPanel
+.sunrise-title,
+.SettingsPanel
+.sunset-title {
+    display: inline-block;
+    width: 100%;
+}
+
+.SettingsPanel
+.sunrise-icon,
+.SettingsPanel
+.sunset-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SettingsPanel
 .sunrise-icon {
-    left: 10px;
     width: 50px;
     height: 50px;
 }
 
+.SettingsPanel
 .sunset-icon {
-    right: 10px;
     width: 35px;
     height: 35px;
+}
+
+/* TIME STYLES */
+
+.SettingsPanel
+.time-input-group {
+    display: inline-block;
+    font-size: 0;
+    width: 75px;
+}
+
+.SettingsPanel
+.time-input-group.time-above {
+    vertical-align: bottom;
+}
+
+.SettingsPanel
+.time-input-group.time-below{
+    vertical-align: top;
+}
+
+.SettingsPanel
+.time-input-separator {
+    display: inline-block;
+    text-align: center;
+    width: 13px;
+    font-size: 20px;
+}
+
+.SettingsPanel
+.time-input-group
+.time-input {
+    width:  30px;
+    height: 30px;
+
+    box-sizing: border-box;
+    padding: 0px 1px;
+    border: none;
+
+    background: transparent;
+    color: inherit;
+    font: inherit;
+
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.SettingsPanel
+.time-input-group
+.time-input:hover {
+    border: 1px solid #BBB;
+}
+
+
+/* COLOURS STYLES */
+
+.SettingsPanel
+.pickers-column {
+    display: inline-block;
+    width: 40px;
+}
+
+.SettingsPanel
+.pickers-above {
+    margin-bottom: 13px;
+}
+
+.SettingsPanel
+.pickers-below {
+    margin-left: 9px;
+    margin-top: 10px;
+}
+
+.SettingsPanel
+.pickers-column
+.ColourPicker {
+    padding: 3px;
+}
+
+.SettingsPanel
+.pickers-column.pickers-below
+.ColourPicker {
+    margin-bottom: 10px;
+}
+
+.SettingsPanel
+.pickers-column.pickers-above
+.ColourPicker {
+    margin-top: 10px;
+}
+
+
+/* CLOCK STYLES */
+
+.SettingsPanel
+.clock-options {
+    display: relative;
+    width: 100%;
+    margin-top: 50px;
+    font-size: 0px;
+}
+
+.SettingsPanel
+.option-button {
+    display: inline-block;
+    background: #BBB;
+    color: #FFFFFC;
+
+    box-sizing: border-box;
+    padding: 3px 6px;
+}
+
+.SettingsPanel
+.option-panel {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    color: #969685;
+}
+
+.SettingsPanel
+.title {
+	font-size: 10px;
+}
+
+.SettingsPanel
+.value,
+.SettingsPanel
+.separator {
+	font-size: 20px;
+}
+
+.SettingsPanel
+.clock-body-analog {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    padding: 0;
+}
+
+.SettingsPanel
+.clock-body-analog
+.clock-face {
+    height: 50px;
+    width: 50px;
+    border-width: 3px;
 }

@@ -13,21 +13,23 @@ export default Vue.extend({
     ],
     data() {
         return {
-            mode: 'digital',
             snap_point: 600
         }
     },
     ready() {
         // window.clock_panel = this
+
+        // check snap in settings
+        if(this.settings.snap) this.snap_point = this.settings.snap
     },
     methods: {
         resize_panel(size) {
-            if(!this.settings.lock) {
+            if(!this.settings.lock && this.snap_point != null) {
                 if(window.innerWidth <= this.snap_point) {
-                    this.mode = 'analog'
+                    this.settings.mode = 'analog'
                 }
                 else {
-                    this.mode = 'digital'
+                    this.settings.mode = 'digital'
                 }
             }
         },
@@ -68,9 +70,6 @@ export default Vue.extend({
                         this.settings.colours.sunset_secondary :
                         this.settings.colours.sunrise_secondary
         },
-    },
-    watch: {
-
     },
     events: {
         resize(size) {
