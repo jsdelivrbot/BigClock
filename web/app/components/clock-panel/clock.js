@@ -9,41 +9,73 @@ import moment from 'moment'
 export default Vue.extend({
     template: tmpl,
     props: [
-        'time',
+        'settings',
     ],
     data() {
-        return {}
+        return {
+            mode: 'digital',
+            snap_point: 600
+        }
     },
     ready() {
         // window.clock_panel = this
     },
     methods: {
         resize_panel(size) {
-
-        }
+            if(!this.settings.lock) {
+                if(window.innerWidth <= this.snap_point) {
+                    this.mode = 'analog'
+                }
+                else {
+                    this.mode = 'digital'
+                }
+            }
+        },
+		toggle_dimmer() {
+			this.settings.dim = !this.settings.dim;
+		},
     },
     computed: {
         // clock units
         hours() {
-            return this.time.format("hh")
+            return this.settings.time.format("hh")
         },
         minutes() {
-            return this.time.format("mm")
+            return this.settings.time.format("mm")
         },
         seconds() {
-            return this.time.format("ss")
+            return this.settings.time.format("ss")
         },
         period() {
-            return this.time.format("a").toUpperCase()
-        }
+            return this.settings.time.format("a").toUpperCase()
+        },
+        hours_degrees() {
+            return (this.hours*30) + (this.minutes / 2)
+        },
+        minutes_degrees() {
+            return (this.minutes * 6)
+        },
+        seconds_degrees() {
+            return (this.seconds * 6)
+        },
+        primary() {
+            return this.settings.dim ?
+                        this.settings.colours.sunset_primary :
+                        this.settings.colours.sunrise_primary
+        },
+        secondary() {
+            return this.settings.dim ?
+                        this.settings.colours.sunset_secondary :
+                        this.settings.colours.sunrise_secondary
+        },
     },
     watch: {
 
     },
     events: {
         resize(size) {
-            this.resize_panel(size);
+            this.resize_panel(size)
             return true
-        }
+        },
     }
 })

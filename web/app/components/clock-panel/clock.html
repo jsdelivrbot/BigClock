@@ -1,6 +1,5 @@
-<!-- ClockPanel -->
-<div class="ClockPanel noselect">
-	<div class="clock-body">
+<div class="ClockPanel noselect" v-on:click="toggle_dimmer">
+	<div class="clock-body-digital" v-if="mode == 'digital'">
 		<div class="unit hours">
 			<div class="inset-text title">HOURS</div>
 			<div class="inset-text value">
@@ -29,4 +28,26 @@
             </div>
 		</div>
 	</div>
+    <div class="clock-body-analog" v-if="mode == 'analog'" v-on:click="toggle_dimmer">
+        <div class="clock-face transition-base" v-bind:style="{ borderColor: secondary }">
+            <div class="hand"><div class="marker marker-one   transition-base" v-bind:style="{ background:  secondary }"></div></div>
+            <div class="hand"><div class="marker marker-two   transition-base" v-bind:style="{ background:  secondary }"></div></div>
+            <div class="hand"><div class="marker marker-three transition-base" v-bind:style="{ background:  secondary }"></div></div>
+
+            <div class="centre transition-base" v-bind:style="{ background: secondary }"></div>
+
+            <div class="hand">
+                <div class="hour-hand hand-transition"
+                     v-bind:style="{ transform: 'rotate('+hours_degrees+'deg)',   background: secondary }"></div>
+            </div>
+            <div class="hand">
+                <div class="minute-hand hand-transition"
+                     v-bind:style="{ transform: 'rotate('+minutes_degrees+'deg)', background: secondary }"></div>
+            </div>
+            <div class="hand">
+                <div class="second-hand hand-transition"
+                     v-bind:style="{ transform: 'rotate('+seconds_degrees+'deg)', background: secondary }"></div>
+            </div>
+        </div>
+    </div>
 </div>

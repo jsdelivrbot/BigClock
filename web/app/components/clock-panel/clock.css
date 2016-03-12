@@ -1,11 +1,13 @@
 .ClockPanel {
+    height: 50%;
 	width: 100%;
-	height: 100%;
 	text-align: center;
 }
 
+/* ––– DIGITAL ––– */
+
 .ClockPanel
-.clock-body {
+.clock-body-digital {
     max-height: 100%;
 	width: 100%;
 
@@ -20,15 +22,14 @@
 
 .ClockPanel
 .title {
-	font-size: 2em;
+	font-size: 2vw;
 }
 
 .ClockPanel
 .value,
 .ClockPanel
 .separator {
-	font-size: 10em;
-	line-height: 1em;
+	font-size: 10vw;
 }
 
 .ClockPanel
@@ -36,4 +37,128 @@
 	padding-left: 5px;
 	padding-right: 5px;
     box-sizing: border-box;
+}
+
+/* ––– ANALOG ––– */
+
+.ClockPanel
+.clock-body-analog {
+	width: 100%;
+    max-height: 250px;
+    padding-top: 40px;
+}
+
+.ClockPanel
+.clock-body-analog
+.clock-face {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+
+    border: 10px solid #FFF;
+    border-radius: 50%;
+}
+
+.ClockPanel
+.clock-body-analog
+.centre {
+    position: relative;
+    top: 46.5%;
+    left: 46.5%;
+
+    width: 7%;
+    height: 7%;
+
+    background: #FFF;
+    border-radius: 50%;
+}
+
+.ClockPanel
+.clock-body-analog
+.hand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.ClockPanel .clock-body-analog .hour-hand,
+.ClockPanel .clock-body-analog .minute-hand,
+.ClockPanel .clock-body-analog .second-hand,
+.ClockPanel .clock-body-analog .marker {
+    position: absolute;
+    left: 47%;
+    width: 6%;
+
+    background: #FFF;
+    border-radius: 6px;
+
+    -webkit-transform-origin: 50% 100%; /* Chrome, Safari, Opera */
+        -ms-transform-origin: 50% 100%; /* IE 9 */
+            transform-origin: 50% 100%;
+}
+
+.ClockPanel
+.clock-body-analog
+.hour-hand {
+    top: 15%;
+    height: 35%;
+}
+
+.ClockPanel
+.clock-body-analog
+.minute-hand {
+    top: 5%;
+    height: 45%;
+}
+
+.ClockPanel
+.clock-body-analog
+.second-hand {
+    top: 10%;
+    height: 40%;
+
+    left: 49.5%;
+    width: 1%;
+
+    border-radius: 1px;
+}
+
+.ClockPanel
+.clock-body-analog
+.hand-transition {
+    -webkit-transition: background 1s;
+       -moz-transition: background 1s;
+        -ms-transition: background 1s;
+         -o-transition: background 1s;
+            transition: background 1s;
+}
+
+.ClockPanel
+.clock-body-analog
+.marker {
+    top: 5%;
+    height: 13%;
+
+    -webkit-transform-origin: 50% 345%; /* Chrome, Safari, Opera */
+        -ms-transform-origin: 50% 345%; /* IE 9 */
+            transform-origin: 50% 345%;
+}
+
+.ClockPanel .clock-body-analog .marker.marker-one   {
+    -webkit-transform: rotate(342deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(342deg); /* IE 9 */
+            transform: rotate(342deg);
+}
+.ClockPanel .clock-body-analog .marker.marker-two   {
+    -webkit-transform: rotate(324deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(324deg); /* IE 9 */
+            transform: rotate(324deg);
+}
+.ClockPanel .clock-body-analog .marker.marker-three {
+    -webkit-transform: rotate(306deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(306deg); /* IE 9 */
+            transform: rotate(306deg);
 }

@@ -6,16 +6,26 @@ import Vue from 'vue'
 
 import moment from 'moment'
 
+// –– App panels
+import colour_picker from "app/components/colour-picker/colour-picker"
+
+
 export default Vue.extend({
     template: tmpl,
+    props: [
+        'settings',
+    ],
     data() {
         return {
-            open: false,
+            open: true,
             sunrise_hour: 6,
             sunrise_minute: 0,
             sunset_hour: 20,
             sunset_minute: 0,
         }
+    },
+    components:{
+        "colour-picker": colour_picker,
     },
     ready() {
         // window.settings_panel = this
@@ -29,7 +39,16 @@ export default Vue.extend({
 		}
     },
     computed: {
-
+        primary() {
+            return this.settings.dim ?
+                        this.settings.colours.sunset_primary :
+                        this.settings.colours.sunrise_primary
+        },
+        secondary() {
+            return this.settings.dim ?
+                        this.settings.colours.sunset_secondary :
+                        this.settings.colours.sunrise_secondary
+        },
     },
     watch: {
         // update morning

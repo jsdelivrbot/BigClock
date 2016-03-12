@@ -1,0 +1,24 @@
+<div class="ColourPicker" v-on:click="open">
+    <div class="selection-view">
+        <div id="selection" class="selection" v-bind:style="{ background: selection_property }"></div>
+    </div>
+    <div class="picker" v-if="visible" v-on:click.stop>
+        <input class="display" v-model="selection"/><span class="clear" v-on:click="clear_selection">x</span>
+        <div class="opacity" v-on:click="handle_opacity" v-el:slider>
+            <div class="opacity-value" v-bind:style="opacity_property" v-el:slider-pointer></div>
+            <div class="opacity-track"></div>
+        </div>
+        <div class="palette" v-if="palette">
+            <div class="palette-title">Pick a Colour</div>
+            <span class="palette-item"
+                  v-for="option in palette"
+                  v-bind:style="{ background: option.hex }"
+                  v-on:click="selection = option.hex">
+                <div class="palette-tooltip">
+                    <span class="palette-tooltip-content"> {{option.name}} </span>
+                </div>
+            </span>
+        </div>
+    </div>
+    <div class="handle" v-if="visible"></div>
+</div>

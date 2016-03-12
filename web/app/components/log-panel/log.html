@@ -1,8 +1,7 @@
-<!-- LogPanel -->
 <div class="LogPanel">
     <div class="data-display transition-base" v-if="has_logged">
         <ul class="data-points">
-            <li class="point"  v-for="record in records">
+            <li class="point"  v-for="record in records" v-on:click.stop>
                 <span class="stamp-content">
                     {{record.content}}
                 </span>
@@ -20,7 +19,7 @@
     <br>
     <form class="entry-form transition-base" v-on:submit.prevent="new_entry" v-on:click.stop>
         <input class="item-entry" type="text" name="content" placeholder="Enter an item" v-model="entry">
-        <input class="item-entry" type="text" name="stamp" v-model="stamp" v-bind:placeholder="time">
+        <input class="item-entry" type="text" name="stamp" v-model="stamp" v-bind:placeholder="time.">
         <button class="item-submit transition-base" v-on:click="new_entry">
             <i class="fa fa-fw fa-arrow-circle-o-right"></i>
         </button>

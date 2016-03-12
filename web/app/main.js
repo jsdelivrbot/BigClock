@@ -1,32 +1,60 @@
+// CSS Imports
+// –– Root Styles
 import './main.css!'
 
+// JS Imports
+// –– Vue
 import Vue from "vue"
+import ResizeMixin from 'vue-resize-mixin'
 
-// –– Dependencies  –– //
+// –– Dependencies
 import moment from 'moment'
 
-// –– Panel Imports –– //
+// –– App panels
 import clock_panel    from "app/components/clock-panel/clock"
 import settings_panel from "app/components/settings-panel/settings"
 import log_panel      from "app/components/log-panel/log"
 
+// Vue global settings
+Vue.config.debug = true
+
+// Init App
 var app = new Vue({
+    mixins: [ResizeMixin],
 	el: 'body',
 	data() {
         return {
-            dim: false,
-            current_time: moment(),
-            morning: moment().hour(20).minutes(0).seconds(0),
-            evening: moment().hour(6).minutes(0).seconds(0),
+            settings: {
+                dim: false,
+                time: moment(),
+                sunrise: moment().hour(20).minutes(0).seconds(0),
+                sunset:  moment().hour(6).minutes(0).seconds(0),
+                colours: {
+                    sunrise_primary: '#FFFFFC',
+                    sunrise_secondary: '#969685',
+                    sunset_primary: '#333',
+                    sunset_secondary: '#D6D6D4',
+                },
+                lock: false,
+            },
         }
 	},
-    components:{
+    components: {
         "log-panel": log_panel,
         "clock-panel": clock_panel,
         "settings-panel": settings_panel,
     },
 	computed: {
-
+        primary() {
+            return this.settings.dim ?
+                        this.settings.colours.sunset_primary :
+                        this.settings.colours.sunrise_primary
+        },
+        secondary() {
+            return this.settings.dim ?
+                        this.settings.colours.sunset_secondary :
+                        this.settings.colours.sunrise_secondary
+        },
 	},
 	methods: {
         window_size() {
@@ -34,29 +62,29 @@ var app = new Vue({
         },
         tick_over() {
 			// set time
-			this.current_time = moment()
+			this.settings.time = moment()
 
 			// re-evaluate time for diming screen
-            if( this.current_time.isSame(this.morning,'seconds') ) {
-            	this.dim = false
+            if( this.settings.time.isSame(this.settings.sunrise,'seconds') ) {
+            	this.settings.dim = false
             }
-            else if( this.current_time.isSame(this.evening,'seconds') ) {
-            	this.dim = true
+            else if( this.settings.time.isSame(this.settings.sunset,'seconds') ) {
+            	this.settings.dim = true
             }
 		},
-		set_morning(hour,minutes) {
-			this.morning.hour(hour).minutes(minutes)
+		set_sunrise(hour,minutes) {
+			this.settings.sunrise.hour(hour).minutes(minutes)
 		},
-		set_evening(hour,minutes) {
-			this.evening.hour(hour).minutes(minutes)
+		set_sunset(hour,minutes) {
+			this.settings.sunset.hour(hour).minutes(minutes)
 		},
 		toggle_dimmer() {
-			this.dim = !this.dim
+			this.settings.dim = !this.settings.dim;
 		},
 	},
     watch: {
         // update document title
-        current_time(value) {
+        time(value) {
             document.title = value.format("hh:mm:ss a").toUpperCase()
         },
     },
@@ -65,7 +93,11 @@ var app = new Vue({
         setInterval(this.tick_over.bind(this), 1000)
 
         // evaluate time of day for page load
-        if( moment().hours() > 20 || moment().hours() < 6 ) this.dim = true
+        var now  = moment().hours(),
+            morn = this.settings.sunrise.hours(),
+            eve  = this.settings.sunset.hours()
+
+        if( now <= morn || now >= eve ) this.toggle_dimmer()
     },
     events: {
         resize(size) {

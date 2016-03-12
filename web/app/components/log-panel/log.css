@@ -78,10 +78,10 @@
 .LogPanel .data-display::-webkit-scrollbar-track       { background:transparent;              }
 
 /* Scrollbar Dim */
-.LogPanel .data-display::-webkit-scrollbar             { width: 10px;                         }
-.LogPanel .data-display::-webkit-scrollbar-thumb       { background:#5C5C5C; border-radius: 0;}
-.LogPanel .data-display::-webkit-scrollbar-thumb:hover { background:#5C5C5C;                  }
-.LogPanel .data-display::-webkit-scrollbar-track       { background:transparent;              }
+.LogPanel.dim .data-display::-webkit-scrollbar             { width: 10px;                         }
+.LogPanel.dim .data-display::-webkit-scrollbar-thumb       { background:#5C5C5C; border-radius: 0;}
+.LogPanel.dim .data-display::-webkit-scrollbar-thumb:hover { background:#5C5C5C;                  }
+.LogPanel.dim .data-display::-webkit-scrollbar-track       { background:transparent;              }
 
 .LogPanel
 .data-display

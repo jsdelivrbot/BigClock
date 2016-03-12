@@ -31,9 +31,10 @@
 		</div>
 
 		<div id="Main" v-cloak>
-            <div class="content transition-base" v-on:click="toggle_dimmer" v-bind:class="{ dim: dim }">
-                <clock-panel v-bind:time="current_time"></clock-panel>
-                <log-panel v-bind:time="current_time"></log-panel>
+            <div class="content transition-base" v-bind:class="{ dim: settings.dim }" v-bind:style="{ background:primary, color:secondary }">
+                <settings-panel v-bind:settings.sync="settings"></settings-panel>
+                <clock-panel    v-bind:settings.sync="settings"></clock-panel>
+                <!-- <log-panel      v-bind:settings.sync="settings"></log-panel> -->
             </div>
         </div>
 
