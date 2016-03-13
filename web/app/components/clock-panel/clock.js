@@ -6,50 +6,46 @@ import Vue from 'vue'
 
 import moment from 'moment'
 
+
 export default Vue.extend({
     template: tmpl,
     props: [
-        'settings',
+        'time',
+        'face',
+        'mode',
+        'lock',
     ],
     data() {
         return {
-            snap_point: 600
+            snap: 600, // 600px width for auto switch to analog
         }
     },
     ready() {
         // window.clock_panel = this
-
-        // check snap in settings
-        if(this.settings.snap) this.snap_point = this.settings.snap
     },
     methods: {
         resize_panel(size) {
-            if(!this.settings.lock && this.snap_point != null) {
-                if(window.innerWidth <= this.snap_point) {
-                    this.settings.mode = 'analog'
-                }
-                else {
-                    this.settings.mode = 'digital'
-                }
+            if(!this.lock) {
+                var current_width = this.$els.clock.innerWidth
+
+                // update the mode if below the snap point
+                this.mode = current_width <= this.snap ? 'analog' : 'digital'
             }
         },
-		toggle_dimmer() {
-			this.settings.dim = !this.settings.dim;
-		},
     },
     computed: {
         // clock units
         hours() {
-            return this.settings.time.format("hh")
+            return this.time.format("hh")
         },
         minutes() {
-            return this.settings.time.format("mm")
+            return this.time.format("mm")
         },
         seconds() {
-            return this.settings.time.format("ss")
+            return this.time.format("ss")
         },
         period() {
-            return this.settings.time.format("a").toUpperCase()
+            return this.time.format("a").toUpperCase()
         },
         hours_degrees() {
             return (this.hours*30) + (this.minutes / 2)
@@ -59,16 +55,6 @@ export default Vue.extend({
         },
         seconds_degrees() {
             return (this.seconds * 6)
-        },
-        primary() {
-            return this.settings.dim ?
-                        this.settings.colours.sunset_primary :
-                        this.settings.colours.sunrise_primary
-        },
-        secondary() {
-            return this.settings.dim ?
-                        this.settings.colours.sunset_secondary :
-                        this.settings.colours.sunrise_secondary
         },
     },
     events: {

@@ -15,6 +15,7 @@ export default Vue.extend({
     props: [
         'value',
         'default',
+        'position'
     ],
     data() {
         return {
@@ -147,6 +148,40 @@ export default Vue.extend({
         }
     },
     computed: {
+        position_property() {
+            // above by default
+            var result = null
+
+            // check user option
+            if(this.position == 'left') {
+                result = { bottom: "-53px", left: "-207px" }
+            }
+            else if(this.position == 'right') {
+                result = { bottom: "-53px", left: "35px" }
+            }
+            else if(this.position == 'bottom') {
+                result = { bottom: "-157px", left: "-86px" }
+            }
+
+            return result
+        },
+        handle_position_property() {
+            // above by default
+            var result = null
+
+            // check user option
+            if(this.position == 'left') {
+                result = { top: "10px", left: "-15px", transform: "rotate(90deg)" }
+            }
+            else if(this.position == 'right') {
+                result = { top: "10px", left: "21px", transform: "rotate(90deg)" }
+            }
+            else if(this.position == 'bottom') {
+                result = { top: "28px", left: "3px" }
+            }
+
+            return result
+        },
         selection_property() {
             // check for rbg / rgba
             if(this.format == 'rgb') {

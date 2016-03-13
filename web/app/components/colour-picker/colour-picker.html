@@ -1,8 +1,8 @@
 <div class="ColourPicker" v-on:click="open">
     <div class="selection-view">
-        <div id="selection" class="selection" v-bind:style="{ background: selection_property }"></div>
+        <div id="selection" class="selection transition-base" v-bind:style="{ background: selection_property }"></div>
     </div>
-    <div class="picker" v-if="visible" v-on:click.stop>
+    <div class="picker" v-if="visible" v-bind:style="position_property" v-on:click.stop>
         <input class="display" v-model="selection"/><span class="clear" v-on:click="clear_selection">x</span>
         <div class="opacity" v-on:click="handle_opacity" v-el:slider>
             <div class="opacity-value" v-bind:style="opacity_property" v-el:slider-pointer></div>
@@ -20,5 +20,5 @@
             </span>
         </div>
     </div>
-    <div class="handle" v-if="visible"></div>
+    <div class="handle" v-if="visible" v-bind:style="handle_position_property"></div>
 </div>

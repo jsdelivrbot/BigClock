@@ -19,8 +19,8 @@ import log_panel      from "app/components/log-panel/log"
 Vue.config.debug = true
 
 // –– FILTERS
-import display2D from 'app/utils/filters/display2D'
-Vue.filter('display2D', display2D)
+import display_moment from 'app/utils/filters/display_moment'
+Vue.filter('display_moment', display_moment)
 
 
 // Init App
@@ -32,8 +32,8 @@ var app = new Vue({
             settings: {
                 dim: false,
                 time: moment(),
-                sunrise: moment().hour(20).minutes(0).seconds(0),
-                sunset:  moment().hour(6).minutes(0).seconds(0),
+                sunrise: moment().hour(6).minutes(0).seconds(0),
+                sunset:  moment().hour(20).minutes(0).seconds(0),
                 colours: {
                     sunrise_primary:   '#FFFFFC',
                     sunrise_secondary: '#969685',
@@ -41,6 +41,7 @@ var app = new Vue({
                     sunset_secondary:  '#D6D6D4',
                 },
                 mode: 'digital',
+                snap: 600,
                 lock: false,
             },
         }
@@ -70,7 +71,8 @@ var app = new Vue({
 			// set time
 			this.settings.time = moment()
 
-
+            // check for cycle change
+            this.evaluate_time()
 
             // update document title
             document.title = this.settings.time.format("hh:mm:ss a").toUpperCase()
@@ -86,10 +88,10 @@ var app = new Vue({
 		},
         evaluate_time() {
             // re-evaluate time for diming screen
-            if( this.settings.time.isSame(this.settings.sunrise,'minute') ) {
+            if( this.settings.time.isSame(this.settings.sunrise,'second') ) {
             	this.settings.dim = false
             }
-            else if( this.settings.time.isSame(this.settings.sunset,'minute') ) {
+            else if( this.settings.time.isSame(this.settings.sunset,'second') ) {
             	this.settings.dim = true
             }
         }
