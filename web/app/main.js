@@ -72,7 +72,7 @@ var app = new Vue({
 			this.settings.time = moment()
 
             // check for cycle change
-            this.evaluate_time()
+            this.evaluate_time(true)
 
             // update document title
             document.title = this.settings.time.format("hh:mm:ss a").toUpperCase()
@@ -86,14 +86,29 @@ var app = new Vue({
 		toggle_dimmer() {
 			this.settings.dim = !this.settings.dim;
 		},
-        evaluate_time() {
-            // re-evaluate time for diming screen
-            if( this.settings.time.isSame(this.settings.sunrise,'second') ) {
-            	this.settings.dim = false
+        evaluate_time(exact) {
+            if(exact == true) {
+                // capture times
+                var now     = this.settings.time.format("HH:mm:ss")
+                    sunrise = this.settings.sunrise.format("HH:mm:ss")
+                    sunset  = this.settings.sunset.format("HH:mm:ss")
+
+                // evaluate for exact match
+                if(now == sunrise) light = true
+                if(now == sunset)  light = false
             }
-            else if( this.settings.time.isSame(this.settings.sunset,'second') ) {
-            	this.settings.dim = true
+            else {
+                // capture times
+                var now     = this.settings.time.hours(),
+                    sunrise = this.settings.sunrise.hours(),
+                    sunset  = this.settings.sunset.hours()
+
+                // evaluate between ranges
+                var light = ( now > sunrise && now < sunset )
             }
+
+            // set the dimmer based on result (only toggle when light is set)
+            if( light === true || light === false ) this.settings.dim = !light
         }
 	},
     ready(){
@@ -101,11 +116,7 @@ var app = new Vue({
         setInterval(this.tick_over.bind(this), 1000)
 
         // evaluate time of day for page load
-        var now  = moment().hours(),
-            morn = this.settings.sunrise.hours(),
-            eve  = this.settings.sunset.hours()
-
-        if( now <= morn || now >= eve ) this.toggle_dimmer()
+        this.evaluate_time()
     },
     events: {
         resize(size) {

@@ -18,7 +18,12 @@ export default Vue.extend({
     ],
     data() {
         return {
-            open: true,
+            open: false,
+            current_page: 'circadian',
+            pages: [
+                'circadian',
+                'face_type',
+            ],
         }
     },
     components:{
@@ -26,7 +31,7 @@ export default Vue.extend({
         "clock-panel": clock_panel,
     },
     ready() {
-        // window.settings_panel = this
+        window.settings_panel = this
     },
     methods: {
         resize_panel(size) {
@@ -35,9 +40,29 @@ export default Vue.extend({
 		toggle_settings() {
 			this.open = !this.open
 		},
-        set_lock(type) {
-            this.settings.lock = true;
-            this.settings.mode = type;
+        transition_page(direction) {
+            if(direction == 'previous') {
+                // get the index for the previous page (wrap / catch unknown pages)
+                var next_page = this.pages.indexOf(this.current_page) - 1
+                if(next_page < 0) next_page = (this.pages.length-1)
+            }
+            else {
+                // get the index for the next page (wrap / catch unknown pages)
+                var next_page = this.pages.indexOf(this.current_page) + 1
+                if(next_page > (this.pages.length-1) || next_page == -1) next_page = 0
+            }
+
+            // set next page
+            this.current_page = this.pages[next_page]
+        },
+        toggle_lock(type) {
+            if(this.settings.lock && this.settings.mode == type) {
+                this.settings.lock = false;
+            }
+            else {
+                this.settings.lock = true;
+                this.settings.mode = type;
+            }
         },
         spoof_settings(type) {
             return {

@@ -36,7 +36,7 @@
 
                 <div class="background-content" v-on:click.self="toggle_dimmer">
                     <clock-panel v-bind:time="settings.time"
-                                 v-bind:mode="settings.mode"
+                                 v-bind:mode.sync="settings.mode"
                                  v-bind:lock="settings.lock"
                                  v-bind:face="secondary"></clock-panel>
                 </div>

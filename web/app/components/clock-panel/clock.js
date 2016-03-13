@@ -17,7 +17,7 @@ export default Vue.extend({
     ],
     data() {
         return {
-            snap: 600, // 600px width for auto switch to analog
+            snap: 800, // 800px width for auto switch to analog
         }
     },
     ready() {
@@ -25,12 +25,17 @@ export default Vue.extend({
     },
     methods: {
         resize_panel(size) {
-            if(!this.lock) {
-                var current_width = this.$els.clock.innerWidth
+            var current_width = this.$els.clock.offsetWidth
 
-                // update the mode if below the snap point
-                this.mode = current_width <= this.snap ? 'analog' : 'digital'
+            // update the mode if below the snap point
+            if(current_width <= this.snap) {
+                this.swap_face('analog')
+            } else {
+                this.swap_face('digital')
             }
+        },
+        swap_face(new_mode) {
+            this.mode = this.lock ? this.mode : new_mode
         },
     },
     computed: {
@@ -55,6 +60,11 @@ export default Vue.extend({
         },
         seconds_degrees() {
             return (this.seconds * 6)
+        },
+    },
+    watch: {
+        lock(value) {
+            this.resize_panel()
         },
     },
     events: {

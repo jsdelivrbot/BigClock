@@ -17,24 +17,30 @@
 .settings-container {
     position: absolute;
     bottom: 0px;
+
 	width: 100%;
     height: 230px;
+    overflow: visible;
+
     font-size: 0px;
 
-
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.7);
+       -moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.7);
+            box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.7);
 }
 
+/* always present */
 .SettingsPanel
-.shadow {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+.rise-transition {
+    transition: all .3s ease-in-out;
+    height: 230px;
+}
 
-    -webkit-box-shadow: inset 0px 2px 10px 0px rgba(0,0,0,0.7);
-       -moz-box-shadow: inset 0px 2px 10px 0px rgba(0,0,0,0.7);
-            box-shadow: inset 0px 2px 10px 0px rgba(0,0,0,0.7);
+/* .rise-enter defines the starting state for entering */
+/* .rise-leave defines the ending state for leaving */
+.SettingsPanel .rise-enter,
+.SettingsPanel .rise-leave {
+    height: 0;
 }
 
 
@@ -43,10 +49,10 @@
 .SettingsPanel
 .settings-container
 .settings-subsection {
-    position: relative;
+    position: absolute;
     display: inline-block;
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: 230px;
 
     box-sizing: border-box;
     border: 5px solid #BBB;
@@ -61,27 +67,57 @@
 
 .SettingsPanel
 .settings-container
-.settings-subsection:last-child {
-    border-right: none;
-}
-
-.SettingsPanel
-.settings-container
 .settings-subsection
 .section-title {
     display: inline-block;
-    margin-top: 3px;
+    z-index: 100;
+
+    box-sizing: border-box;
+    padding: 3px 6px;
+    margin: 0;
+
+    background: #BBB;
+    color: #FFFFFC;
 }
 
 .SettingsPanel
 .settings-container
 .settings-subsection .section-title
 .section-title-text {
-    background: #BBB;
-    color: #FFFFFC;
+    font-weight: bold;
+}
 
-    box-sizing: border-box;
-    padding: 3px 6px;
+.SettingsPanel
+.settings-container
+.settings-subsection .section-title
+.title-navigate {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.SettingsPanel
+.settings-container
+.settings-subsection .section-title
+.title-navigate:hover {
+    background: #5C5C54;
+}
+
+/* always present */
+.SettingsPanel
+.swipe-transition {
+    transition: all 1s ease-in-out;
+    left: 0;
+}
+
+/* .swipe-enter defines the starting state for entering */
+.SettingsPanel .swipe-enter {
+    left: -100%;
+}
+
+/* .swipe-leave defines the ending state for leaving */
+.SettingsPanel .swipe-leave {
+    left: 100%;
 }
 
 
@@ -251,46 +287,88 @@
 
 .SettingsPanel
 .clock-options {
-    display: relative;
+    display: block;
     width: 100%;
+    height: calc(100% - 20px);
+    overflow: hidden;
+
     font-size: 0px;
-}
-
-.SettingsPanel
-.option-button {
-    display: inline-block;
-    background: #BBB;
-    color: #FFFFFC;
-
-    box-sizing: border-box;
-    padding: 3px 6px;
 }
 
 .SettingsPanel
 .option-panel {
     display: inline-block;
     width: 50%;
+    height: 100%;
+
     text-align: center;
     color: #969685;
 }
 
 .SettingsPanel
+.option-panel
+.option-content {
+    box-sizing: border-box;
+    padding: 50px 0;
+    height: 80%;
+}
+
+.SettingsPanel
+.option-panel
+.option-footer {
+    display: inline-block;
+    height: 20%;
+    width: 100%;
+}
+
+.SettingsPanel
+.option-button {
+    display: inline-block;
+    width: 150px;
+
+    box-sizing: border-box;
+    padding: 3px 6px;
+
+    background: #BBB;
+    color: #FFFFFC;
+    font-size: 13px;
+}
+
+.SettingsPanel
+.option-button:hover {
+    background: #5C5C54;
+}
+
+.SettingsPanel
+.option-button.active {
+    background: #eee;
+    color: #333;
+    border: 1px solid grey;
+}
+
+.SettingsPanel
+.clock-body-digital {
+    padding: 0;
+    height: 80px;
+}
+
+.SettingsPanel
 .title {
-	font-size: 10px;
+	font-size: calc(2vw/3);
 }
 
 .SettingsPanel
 .value,
 .SettingsPanel
 .separator {
-	font-size: 20px;
+    font-size: calc(10vw/3);
 }
 
 .SettingsPanel
 .clock-body-analog {
     display: inline-block;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     padding: 0;
 }
 
