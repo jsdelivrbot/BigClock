@@ -1,0 +1,94 @@
+.FacePanel {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-size: 0px;
+}
+
+.FacePanel
+.option-panel {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+
+    text-align: center;
+    color: #969685;
+}
+
+.FacePanel
+.option-panel
+.option-content {
+    box-sizing: border-box;
+    padding: 50px 0;
+    height: 80%;
+}
+
+.FacePanel
+.option-panel
+.option-footer {
+    display: inline-block;
+    height: 20%;
+    width: 100%;
+}
+
+.FacePanel
+.option-button {
+    display: inline-block;
+    width: 150px;
+
+    box-sizing: border-box;
+    padding: 3px 6px;
+
+    background: #BBB;
+    color: #FFFFFC;
+    font-size: 13px;
+}
+
+.FacePanel
+.option-button:hover {
+    background: #5C5C54;
+}
+
+.FacePanel
+.option-button.active {
+    background: #eee;
+    color: #333;
+    border: 1px solid grey;
+}
+
+/* Clock Panel Mods */
+
+.FacePanel
+.clock-body-digital {
+    padding: 0;
+    height: 80px;
+}
+
+.FacePanel
+.title {
+	font-size: calc(2vw/3);
+}
+
+.FacePanel
+.value,
+.FacePanel
+.separator {
+    font-size: calc(10vw/3);
+}
+
+.FacePanel
+.clock-body-analog {
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    padding: 0;
+}
+
+.FacePanel
+.clock-body-analog
+.clock-face {
+    height: 70px;
+    width: 70px;
+    border-width: 5px;
+}

@@ -24,14 +24,18 @@
 
 body {
     position: absolute;
+    top: 0;
+    left: 0;
+
     height: 100%;
     width: 100%;
-    font-family: 'PT Mono', sans-serif;
-
     overflow: hidden;
-    background: #FFFFFC;
+
     margin: 0;
     padding: 0;
+
+    background: #FFFFFC;
+    font-family: 'PT Mono', sans-serif;
 }
 
 h1,h2,h3,h4,.title {}
@@ -67,6 +71,9 @@ button:focus {
 
 #Main {
     position: absolute;
+    top: 0;
+    left: 0;
+
     height: 100%;
     width: 100%;
 }

@@ -1,0 +1,26 @@
+<div class="FacePanel">
+    <div class="option-panel">
+        <div class="option-content">
+            <clock-panel v-bind:time="settings.time"
+                         v-bind:mode="'analog'"
+                         v-bind:lock="'true'"
+                         v-bind:face="'#969685'"></clock-panel>
+        </div>
+        <div class="option-footer">
+            <span class="option-button" v-on:click="toggle_lock('analog')"
+                  v-bind:class="{ active:settings.lock && settings.mode == 'analog' }">Lock as Analog</span>
+        </div>
+    </div>
+    <div class="option-panel">
+        <div class="option-content">
+            <clock-panel v-bind:time="settings.time"
+                         v-bind:mode="'digital'"
+                         v-bind:lock="'true'"
+                         v-bind:face="'#969685'"></clock-panel>
+        </div>
+        <div class="option-footer">
+            <span class="option-button" v-on:click="toggle_lock('digital')"
+                  v-bind:class="{ active:settings.lock && settings.mode == 'digital' }">Lock as Digital</span>
+        </div>
+    </div>
+</div>

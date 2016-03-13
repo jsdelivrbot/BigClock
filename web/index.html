@@ -16,7 +16,7 @@
 		<link rel='stylesheet' type='text/css' href="https://fonts.googleapis.com/css?family=PT+Mono" />
 
         <!-- font awesome -->
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 
         <!-- loader -->
         <link rel='stylesheet' type='text/css' href="loader.css" />
@@ -34,7 +34,7 @@
             <div class="content transition-base" v-bind:class="{ dim: settings.dim }" v-bind:style="{ background:primary, color:secondary }">
                 <settings-panel v-bind:settings.sync="settings"></settings-panel>
 
-                <div class="background-content" v-on:click.self="toggle_dimmer">
+                <div class="background-content" v-on:click="toggle_dimmer">
                     <clock-panel v-bind:time="settings.time"
                                  v-bind:mode.sync="settings.mode"
                                  v-bind:lock="settings.lock"

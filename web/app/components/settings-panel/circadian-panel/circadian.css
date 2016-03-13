@@ -1,0 +1,166 @@
+.CircadianPanel {
+    width: 100%;
+    height: 100%;
+}
+
+.CircadianPanel
+.split-section {
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(50%,#FFFFFC), color-stop(50%,#333));
+    background: -webkit-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:    -moz-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:     -ms-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:      -o-linear-gradient(-45deg, #FFFFFC 50%, #333 50%);
+    background:         linear-gradient(135deg, #FFFFFC 50%, #333 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFC', endColorstr='#333',GradientType=1 );
+}
+
+.CircadianPanel
+.split-subsection {
+    position: absolute;
+    padding: 10px;
+    min-width: 30%;
+}
+
+.CircadianPanel
+.split-subsection.section-left {
+    top: 30px;
+    left: 30px;
+    text-align: left;
+}
+
+.CircadianPanel
+.split-subsection.section-right {
+    bottom: 30px;
+    right: 30px;
+    text-align: right;
+}
+
+.CircadianPanel
+.sunrise-group,
+.CircadianPanel
+.sunset-group {
+    display: inline-block;
+    vertical-align: middle;
+    width: 75px;
+    text-align: center;
+}
+
+.CircadianPanel
+.sunrise-title,
+.CircadianPanel
+.sunset-title {
+    display: inline-block;
+    width: 100%;
+}
+
+.CircadianPanel
+.sunrise-icon,
+.CircadianPanel
+.sunset-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.CircadianPanel
+.sunrise-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.CircadianPanel
+.sunset-icon {
+    width: 35px;
+    height: 35px;
+}
+
+/* TIME STYLES */
+
+.CircadianPanel
+.time-input-group {
+    display: inline-block;
+    font-size: 0;
+    width: 75px;
+}
+
+.CircadianPanel
+.time-input-group.time-above {
+    vertical-align: bottom;
+}
+
+.CircadianPanel
+.time-input-group.time-below{
+    vertical-align: top;
+}
+
+.CircadianPanel
+.time-input-separator {
+    display: inline-block;
+    text-align: center;
+    width: 13px;
+    font-size: 20px;
+}
+
+.CircadianPanel
+.time-input-group
+.time-input {
+    width:  30px;
+    height: 30px;
+
+    box-sizing: border-box;
+    padding: 0px 1px;
+    border: none;
+
+    background: transparent;
+    color: inherit;
+    font: inherit;
+
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.CircadianPanel
+.time-input-group
+.time-input:hover {
+    border: 1px solid #BBB;
+}
+
+
+/* COLOURS STYLES */
+
+.CircadianPanel
+.pickers-column {
+    display: inline-block;
+    width: 40px;
+}
+
+.CircadianPanel
+.pickers-above {
+    margin-bottom: 13px;
+}
+
+.CircadianPanel
+.pickers-below {
+    margin-left: 9px;
+    margin-top: 10px;
+}
+
+/* Colour Picker Mods */
+
+.CircadianPanel
+.pickers-column
+.ColourPicker {
+    padding: 3px;
+}
+
+.CircadianPanel
+.pickers-column.pickers-below
+.ColourPicker {
+    margin-bottom: 10px;
+}
+
+.CircadianPanel
+.pickers-column.pickers-above
+.ColourPicker {
+    margin-top: 10px;
+}

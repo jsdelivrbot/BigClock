@@ -94,7 +94,7 @@ export default Vue.extend({
             }
             else if( before == 'named' ) {
                 // get mapped hex value
-                var new_value = this.names[after]
+                var new_value = this.names[this.selection]
 
                 // set rgb / hex value from name mapping
                 if(after == 'rgb') {

@@ -106,6 +106,7 @@
 .picker .clear {
     width: 10%;
     border-left: 0;
+    color: #bbb;
 }
 
 .ColourPicker

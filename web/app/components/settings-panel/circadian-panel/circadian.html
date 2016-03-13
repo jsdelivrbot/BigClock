@@ -1,0 +1,40 @@
+<div class="CircadianPanel split-section transition-base" v-bind:style="gradient">
+    <div class="split-subsection section-left transition-base" v-bind:style="{ color:settings.colours.sunrise_secondary }">
+        <div class="label-group">
+            <svg class="sunrise-icon" width="500" height="500" viewBox="0 0 600 600">
+                <g class="transition-base" v-bind:fill="settings.colours.sunrise_secondary" transform="translate(0.000000,600.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"><path d="M2932 5804 c-18 -9 -43 -31 -55 -48 -22 -30 -22 -37 -25 -394 -3 -402 -2 -409 62 -455 43 -31 129 -31 172 0 63 45 64 54 64 443 0 388 -1 398 -63 442 -39 28 -112 34 -155 12z"/><path d="M892 5160 c-66 -40 -90 -124 -57 -194 9 -18 127 -143 263 -278 265 -264 272 -270 357 -254 46 9 102 65 111 111 16 85 10 92 -254 357 -135 136 -260 254 -278 263 -44 21 -103 19 -142 -5z"/><path d="M4964 5164 c-17 -8 -141 -126 -277 -262 -263 -265 -269 -272 -253 -357 9 -46 65 -102 111 -111 85 -16 92 -10 357 254 136 135 255 261 264 280 59 124 -78 257 -202 196z"/><path d="M2810 4719 c-623 -77 -1149 -468 -1392 -1034 -98 -228 -138 -427 -138 -685 0 -258 40 -457 138 -685 230 -534 714 -916 1297 -1021 139 -25 441 -25 580 0 506 91 939 390 1200 828 156 262 235 557 235 878 0 470 -172 888 -499 1218 -251 253 -581 425 -931 487 -113 19 -384 28 -490 14z m482 -319 c580 -122 1023 -581 1123 -1164 20 -116 20 -356 0 -472 -78 -450 -364 -837 -771 -1042 -105 -53 -233 -97 -357 -124 -84 -18 -134 -22 -282 -22 -201 0 -307 17 -472 75 -491 174 -849 599 -938 1113 -20 116 -20 356 0 472 78 450 364 837 771 1042 139 70 299 119 464 142 103 14 351 4 462 -20z"/><path d="M4962 3144 c-52 -27 -77 -70 -77 -134 0 -41 6 -63 22 -86 43 -59 54 -61 439 -69 391 -8 400 -7 447 59 31 43 31 129 0 172 -43 60 -54 61 -443 68 -321 6 -358 5 -388 -10z"/><path d="M262 3134 c-52 -27 -77 -70 -77 -134 0 -41 6 -63 22 -86 43 -59 54 -61 439 -69 391 -8 400 -7 447 59 31 43 31 129 0 172 -43 60 -54 61 -443 68 -321 6 -358 5 -388 -10z"/><path d="M1354 1554 c-17 -8 -141 -126 -277 -262 -263 -265 -269 -272 -253 -357 9 -46 65 -102 111 -111 85 -16 92 -10 357 254 136 135 255 261 264 280 59 124 -78 257 -202 196z"/><path d="M4512 1553 c-69 -34 -101 -126 -68 -195 9 -19 128 -145 264 -280 265 -264 272 -270 357 -254 46 9 102 65 111 111 16 85 10 92 -254 357 -135 136 -260 254 -278 263 -41 19 -90 19 -132 -2z"/><path d="M2932 1104 c-18 -9 -43 -31 -55 -48 -22 -30 -22 -37 -25 -394 -3 -402 -2 -409 62 -455 43 -31 129 -31 172 0 63 45 64 54 64 443 0 388 -1 398 -63 442 -39 28 -112 34 -155 12z"/></g>
+            </svg>
+            <span class="sunrise-group">
+                <span class="sunrise-title">Sunrise</span>
+                <span class="time-input-group time-below">
+                    <input class="time-input input-hours"   type="text" v-model="settings.sunrise | display_moment 'hours' 'HH' settings.sunrise"/>
+                    <span class="time-input-separator">:</span>
+                    <input class="time-input input-minutes" type="text" v-model="settings.sunrise | display_moment 'minutes' 'mm' settings.sunrise"/>
+                </span>
+            </span>
+        </div>
+        <div class="pickers-column pickers-below">
+            <colour-picker v-bind:position="'right'" v-bind:value.sync="settings.colours.sunrise_secondary"></colour-picker>
+            <colour-picker v-bind:position="'right'" v-bind:value.sync="settings.colours.sunrise_primary"></colour-picker>
+        </div>
+    </div>
+    <div class="split-subsection section-right transition-base" v-bind:style="{ color:settings.colours.sunset_secondary }">
+        <div class="pickers-column pickers-above">
+            <colour-picker v-bind:position="'left'" v-bind:value.sync="settings.colours.sunset_primary"></colour-picker>
+            <colour-picker v-bind:position="'left'" v-bind:value.sync="settings.colours.sunset_secondary"></colour-picker>
+        </div>
+        <div class="label-group">
+            <span class="sunset-group">
+                <span class="time-input-group time-above">
+                    <input class="time-input input-hours"   type="text" v-model="settings.sunset | display_moment 'hours' 'HH' settings.sunrise"/>
+                    <span class="time-input-separator">:</span>
+                    <input class="time-input input-minutes" type="text" v-model="settings.sunset | display_moment 'minutes' 'mm' settings.sunrise"/>
+                </span>
+                <span class="sunset-title">Sunset</span>
+            </span>
+            <svg class="sunset-icon" width="500" height="500" viewBox="0 0 450 450">
+                <g class="transition-base" v-bind:fill="settings.colours.sunset_secondary" transform="translate(0.000000,450.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"><path d="M1950 4450 c-107 -4 -207 -11 -222 -15 -26 -7 -24 -9 50 -65 222 -167 435 -433 560 -700 342 -727 190 -1589 -379 -2159 -314 -314 -717 -505 -1159 -550 -165 -17 -300 -13 -509 15 l-55 7 65 -84 c89 -117 295 -321 410 -406 309 -231 642 -371 1019 -430 159 -24 481 -24 640 0 236 37 440 101 655 206 653 320 1099 932 1212 1661 12 82 17 173 17 320 0 369 -64 650 -223 975 -346 705 -1045 1176 -1826 1228 -33 2 -148 1 -255 -3z m680 -382 c505 -161 922 -527 1148 -1008 342 -727 190 -1589 -379 -2159 -314 -314 -717 -505 -1159 -550 -409 -42 -835 55 -1187 271 -84 51 -85 53 -57 60 16 4 72 17 124 29 796 184 1432 814 1635 1618 45 178 59 310 59 531 0 221 -14 353 -59 531 -62 245 -170 488 -312 705 l-16 26 39 -8 c21 -4 95 -25 164 -46z"/></g>
+            </svg>
+        </div>
+    </div>
+</div>

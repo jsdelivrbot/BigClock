@@ -43,6 +43,7 @@ var app = new Vue({
                 mode: 'digital',
                 snap: 600,
                 lock: false,
+                notes: "",
             },
         }
 	},
