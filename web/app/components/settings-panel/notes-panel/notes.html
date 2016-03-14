@@ -1,3 +1,16 @@
 <div class="NotesPanel transition-base" v-bind:style="{ background: primary, color: secondary }">
-    <textarea class="note-space" v-model="settings.notes"></textarea>
+    <div class="editor">
+        <div class="gutter" v-el:gutter>
+            <div class="line-number" v-for="item in lines" track-by="$index">
+                <span class="number">{{ $index+1 }}</span>
+                <div class="line-highlight" v-bind:class="{ current: current_line == $index }"></div>
+            </div>
+        </div>
+        <textarea class="note-space"
+                  v-model="settings.notes"
+                  v-on:scroll="lines_follow"
+                  v-on:click="which_line"
+                  v-on:keyup="which_line"
+                  v-el:notes></textarea>
+    </div>
 </div>

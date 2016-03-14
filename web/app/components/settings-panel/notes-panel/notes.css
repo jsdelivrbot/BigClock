@@ -2,21 +2,90 @@
     width: 100%;
     height: 100%;
 
-    box-sizing: border-box;
-    padding: 25px;
+    text-align: left;
+    font-size: 0px;
 }
 
 .NotesPanel
-.note-space {
+.editor {
     width: 100%;
     height: 100%;
-    overflow: auto;
+
+    box-sizing: border-box;
+}
+
+.NotesPanel
+.gutter {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+
+    width: 100%;
+    height: calc(100% - 5px);
+    overflow: hidden;
+
+    box-sizing: border-box;
+    padding-top: 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.NotesPanel
+.line-number {
+    width: 50px;
+    text-align: right;
+    color: inherit;
+    overflow: visible;
+
+    box-sizing: border-box;
+    padding: 0px 3px;
 
     font-size: 18px;
     font-family: inherit;
 
-    color: inherit;
-    background: transparent;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.NotesPanel
+.line-highlight {
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    margin-top: -20px;
+
+    height: 20px;
+    width: 100vw;
+
+    background: rgba(255, 255, 255, 0.1);
+    visibility: hidden;
+}
+
+.NotesPanel
+.line-highlight.current {
+    visibility: visible;
+}
+
+.NotesPanel
+.note-space {
+    position: absolute;
+    left: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 10;
+
+    width: calc(100% - 50px);
+    height: calc(100% - 5px);
+    overflow: auto;
+
+    margin: 0;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-left: 15px;
+
+    font-size: 18px;
+    font-family: inherit;
+
+    color: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
 
     resize: none;
     border: none;

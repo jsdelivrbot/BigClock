@@ -7,9 +7,9 @@
             <span class="sunrise-group">
                 <span class="sunrise-title">Sunrise</span>
                 <span class="time-input-group time-below">
-                    <input class="time-input input-hours"   type="text" v-model="settings.sunrise | display_moment 'hours' 'HH' settings.sunrise"/>
+                    <input class="time-input input-hours"   type="text" v-model="settings.sunrise | display_moment 'hours' 'HH' settings.sunrise" lazy/>
                     <span class="time-input-separator">:</span>
-                    <input class="time-input input-minutes" type="text" v-model="settings.sunrise | display_moment 'minutes' 'mm' settings.sunrise"/>
+                    <input class="time-input input-minutes" type="text" v-model="settings.sunrise | display_moment 'minutes' 'mm' settings.sunrise" lazy/>
                 </span>
             </span>
         </div>
@@ -26,9 +26,9 @@
         <div class="label-group">
             <span class="sunset-group">
                 <span class="time-input-group time-above">
-                    <input class="time-input input-hours"   type="text" v-model="settings.sunset | display_moment 'hours' 'HH' settings.sunrise"/>
+                    <input class="time-input input-hours"   type="text" v-model="settings.sunset | display_moment 'hours' 'HH' settings.sunset" lazy/>
                     <span class="time-input-separator">:</span>
-                    <input class="time-input input-minutes" type="text" v-model="settings.sunset | display_moment 'minutes' 'mm' settings.sunrise"/>
+                    <input class="time-input input-minutes" type="text" v-model="settings.sunset | display_moment 'minutes' 'mm' settings.sunset" lazy/>
                 </span>
                 <span class="sunset-title">Sunset</span>
             </span>

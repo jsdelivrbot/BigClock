@@ -1,6 +1,7 @@
 <div class="AccountPanel">
-    <div class="account-section" v-if="authenticated">
-        Welcome Dude
+    <div class="account-section" v-if="settings.user">
+        Welcome {{ settings.user.username }}
+        <button v-on:click="sign_out">Sign Out</button>
     </div>
     <div class="signin-section" v-else>
         <div class="signin-title">
@@ -11,7 +12,7 @@
         <form class="signin-form" v-on:submit.prevent="sign_in">
             <input class="signin-input" type="text"     v-model="username" placeholder="username"/>
             <input class="signin-input" type="password" v-model="password" placeholder="password"/>
-            <button class="signin-button" type="submit">Sign in</button>
+            <button class="signin-button" type="submit">Sign In</button>
             <div class="signin-message" v-text="result"></div>
         </form>
     </div>

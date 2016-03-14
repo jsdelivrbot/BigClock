@@ -22,12 +22,12 @@ export default Vue.extend({
         return {
             open: true,
             transition: 'swipe-next',
-            current_page: 'account',
+            current_page: 'Account',
             pages: [
-                'account',
-                'circadian',
-                'notes',
-                'face',
+                'Account',
+                'Circadian Rhythm',
+                'Notes',
+                'Face Style',
             ],
         }
     },

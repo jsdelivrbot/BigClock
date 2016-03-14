@@ -9,6 +9,7 @@ import ResizeMixin from 'vue-resize-mixin'
 
 // –– Dependencies
 import moment from 'moment'
+import request from 'superagent'
 
 // –– App panels
 import clock_panel    from "app/components/clock-panel/clock"
@@ -43,7 +44,9 @@ var app = new Vue({
                 mode: 'digital',
                 snap: 600,
                 lock: false,
+                user: null,
                 notes: "",
+                url: "https://zoho-timesheet-dev.herokuapp.com/v1",
             },
         }
 	},
@@ -118,6 +121,17 @@ var app = new Vue({
 
         // evaluate time of day for page load
         this.evaluate_time()
+
+        // get user (with cookie)
+        request.get(this.settings.url+"/resources/users").withCredentials()
+               .end((error, response) => {
+                   if(!error) {
+                       this.settings.user = response.body.result
+                   }
+                   else {
+                       console.log(error)
+                   }
+               })
     },
     events: {
         resize(size) {

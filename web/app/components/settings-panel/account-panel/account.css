@@ -17,7 +17,7 @@
     height: 100%;
 
     box-sizing: border-box;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .AccountPanel
@@ -56,10 +56,11 @@
 
     font-size: 18px;
     line-height: 30px;
+    font-family: inherit;
 
     box-sizing: border-box;
     padding: 3px 15px;
-    margin: 0px;
+    margin: auto;
     margin-bottom: 5px;
 
     border-radius: 0px;
@@ -82,13 +83,25 @@
     background: #CDCDC3;
 }
 
+.AccountPanel
+.signin-message {
+    width: 300px;
+    max-height: 30px;
+    overflow: auto;
+    margin: auto;
+
+    color: #CB4154;
+    font-size: 0.8em;
+    text-align: center;
+}
+
 
 /* ---- Media Queries ---- */
 
 @media (max-width: 550px) {
     .AccountPanel
     .signin-section {
-        padding-top: 10px;
+        padding-top: 0;
     }
 
     .AccountPanel
@@ -99,5 +112,13 @@
     .AccountPanel
     .signin-subheading {
         display: none;
+    }
+
+    .AccountPanel
+    .signin-form .signin-input,
+    .AccountPanel
+    .signin-form .signin-button {
+        font-size: 14px;
+        line-height: 20px;
     }
 }

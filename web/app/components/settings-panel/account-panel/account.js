@@ -16,7 +16,6 @@ export default Vue.extend({
         return {
             username: null,
             password: null,
-            authenticated: false,
             result: null,
         }
     },
@@ -32,17 +31,21 @@ export default Vue.extend({
         },
         sign_in() {
             // send login request
-            request
-                .put("https://zoho-timesheet-dev.herokuapp.com/v1/rpc/login")
-                .send({ username:this.username, password:this.password })
-                .end((response) => {
-                    console.log(response)
-
-                    if(response && response.status) {
-                        this.authenticated = response.status.ok
-                    }
-                })
-        }
+            request.post(this.settings.url+"/rpc/sign-in").withCredentials()
+                   .send({ username:this.username, password:this.password })
+                   .on('error', this.set_error)
+                   .end(this.set_user)
+        },
+        sign_out() {
+            request.del(this.settings.url+"/rpc/sign-in").withCredentials()
+                   .end(() => this.settings.user = null)
+        },
+        set_user(error, response) {
+            this.settings.user = response.body.result
+        },
+        set_error(error, response) {
+            this.result = response.body.result
+        },
     },
     computed: {
         primary() {
