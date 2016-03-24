@@ -1,9 +1,46 @@
 <div class="AccountPanel">
-    <div class="account-section" v-if="settings.user">
-        Welcome {{ settings.user.username }}
-        <button v-on:click="sign_out">Sign Out</button>
+    <div class="account-section" v-if="settings.user" transition="crossfade">
+        <div class="contact-card">
+            <div class="contact-details">
+                <div class="user-image">
+                    <img class="profile profile-image" v-if="settings.user.image" :src="settings.user.image" />
+                    <svg class="profile profile-icon"  v-else  viewBox="0 0 1205 1205">
+                        <g class="transition-base" v-bind:fill="settings.colours.sunrise_secondary" transform="translate(0,1205) scale(0.1,-0.1)" fill="#000000" stroke="none">
+                            <path d="M5725 10309 c-373 -38 -737 -181 -1042 -407 -113 -85 -330 -302 -415 -415 -556 -748 -556 -1756 0 -2504 85 -113 302 -330 415 -415 748 -556 1756 -556 2504 0 113 85 330 302 415 415 556 748 556 1756 0 2504 -85 113 -302 330 -415 415 -421 313 -949 460 -1462 407z"/>
+                            <path d="M7887 6867 c-12 -31 -178 -229 -267 -317 -364 -364 -827 -597 -1345 -676 -168 -25 -512 -25 -680 0 -489 75 -904 273 -1281 613 -69 62 -149 149 -256 277 l-25 29 -65 -69 c-384 -404 -679 -949 -833 -1539 -85 -325 -119 -596 -119 -970 -1 -294 7 -389 50 -620 170 -918 755 -1504 1749 -1751 721 -179 1699 -178 2414 2 490 123 875 327 1166 619 346 346 532 761 607 1360 19 156 16 638 -6 815 -59 487 -179 887 -386 1295 -122 242 -256 448 -420 646 -66 80 -279 299 -291 299 -4 0 -9 -6 -12 -13z"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="user-details">
+                    <table class="info">
+                        <tr>
+                            <td class="label">User:</td>
+                            <td class="value username">{{ settings.user.username }}</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Email:</td>
+                            <td class="value email">dashb@me.com {{ settings.user.email }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="user-actions">
+                <div class="action sign-out" v-on:click="sign_out">
+                    <i class="fa fa-fw fa-sign-out"></i>
+                </div>
+                <div class="action edit">
+                    <i class="fa fa-fw fa-pencil"></i>
+                </div>
+                <div class="action password">
+                    <i class="fa fa-fw fa-asterisk"></i>
+                </div>
+                <div class="action integration">
+                    <i class="fa fa-fw fa-bolt"></i>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="signin-section" v-else>
+    <div class="signin-section" v-else transition="crossfade">
         <div class="signin-title">
             <!-- <img class="title-icon" src="/images/clock.svg"/> -->
             <span class="signin-title-text">Timesheet</span>
