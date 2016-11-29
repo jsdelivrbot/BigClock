@@ -1,0 +1,25 @@
+<div class="ContactPanel">
+    <div class="user-image">
+        <img class="profile profile-image" v-if="user.image" :src="user.image" />
+        <div class="profile profile-icon" v-else>
+            <span class="lnr lnr-user"></span>
+        </div>
+    </div>
+    <div class="user-details">
+        <table class="info">
+            <tr>
+                <td class="label">User:</td>
+                <td class="value username">
+                    <input class="inline-edit" v-model="user.username" v-bind:disabled="!editing" />
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Email:</td>
+                <td class="value email">
+                    <input class="inline-edit" v-model="user.email" v-bind:disabled="!editing" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="errors" v-show="error">{{ error }}</div>
+</div>

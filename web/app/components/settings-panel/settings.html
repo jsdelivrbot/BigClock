@@ -4,7 +4,6 @@
 
     <!-- Settings Content -->
     <div class="settings-container noselect" v-show="open" transition="rise">
-
         <div class="settings-subsection">
             <div class="section-title">
                 <span class="title-navigate" v-on:click="transition_page('next')"> < </span>
@@ -12,19 +11,19 @@
                 <span class="title-navigate" v-on:click="transition_page('previous')"> > </span>
             </div>
 
-            <div class="section-content" v-if="current_page == 'Account'" v-bind:transition="transition">
+            <div class="section-content" v-show="current_page == 'Account'" v-bind:transition="transition">
                 <account-panel v-bind:settings.sync="settings"></account-panel>
             </div>
 
-            <div class="section-content" v-if="current_page == 'Circadian Rhythm'" v-bind:transition="transition">
+            <div class="section-content" v-show="current_page == 'Circadian Rhythm'" v-bind:transition="transition">
                 <circadian-panel v-bind:settings.sync="settings"></circadian-panel>
             </div>
 
-            <div class="section-content" v-if="current_page == 'Notes'" v-bind:transition="transition">
+            <div class="section-content" v-show="current_page == 'Notes'" v-bind:transition="transition">
                 <notes-panel v-bind:settings.sync="settings"></notes-panel>
             </div>
 
-            <div class="section-content" v-if="current_page == 'Face Style'" v-bind:transition="transition">
+            <div class="section-content" v-show="current_page == 'Face Style'" v-bind:transition="transition">
                 <face-panel v-bind:settings.sync="settings"></face-panel>
             </div>
         </div>

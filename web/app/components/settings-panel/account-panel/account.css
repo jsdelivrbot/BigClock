@@ -18,7 +18,8 @@
 }
 
 .AccountPanel
-.contact-card {
+.account-card {
+    position: relative;
     height: 100%;
     width: 350px;
     margin: auto;
@@ -30,194 +31,125 @@
 }
 
 .AccountPanel
-.contact-details {
+.account-settings {
     width: 100%;
-    height: 60%;
+    height: calc(100% - 60px);
     box-sizing: border-box;
     padding: 10px;
-}
-
-.AccountPanel
-.user-image {
-    display: inline-block;
-    vertical-align: middle;
-    width: 30%;
-    background: #FFFFFC;
-    border-radius: 50%;
-}
-
-.AccountPanel
-.user-image .profile {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.AccountPanel
-.user-details {
-    display: inline-block;
-    vertical-align: middle;
-    width: 70%;
-
-    box-sizing: border-box;
-    padding-left: 20px;
-
-    font-size: 18px;
-    text-align: left;
-}
-
-.AccountPanel
-.info {
-    width: 100%;
-    height: 100%;
-}
-
-.AccountPanel
-.info .label {
-    width: 30%;
-    text-align: right;
-}
-
-.AccountPanel
-.info .value {
-    width: 70%;
 }
 
 .AccountPanel
 .user-actions {
-    height: 40%;
+    height: 60px;
     width: 100%;
     box-sizing: border-box;
-    padding: 10px;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .AccountPanel
 .user-actions .action {
+    position: absolute;
+    bottom: 10px;
+
     display: inline-block;
     vertical-align: middle;
-
-    width: 40px;
     height: 40px;
-    border-radius: 50%;
-
-    margin-top: 5px;
-    margin-right: 30px;
+    width: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
 
     background: #FFFFFC;
     color: #969685;
     line-height: 40px;
+    font-size: 0;
+    font-family: inherit;
+
+    transition: all .3s ease;
+}
+
+.AccountPanel .action:nth-child(2) { right: calc(90% - 40px); left: 10%; }
+.AccountPanel .action:nth-child(3) { right: calc(66% - 40px); left: 33%; }
+.AccountPanel .action:nth-child(4) { right: 33%; left: calc(66% - 40px); }
+.AccountPanel .action:nth-child(5) { right: 10%; left: calc(90% - 40px); }
+
+.AccountPanel .action.active {
+    left: 30%;
+    right: 30%;
+    width: 140px;
+    padding: 0px 10px;
+}
+
+.AccountPanel .user-actions .action .lnr,
+.AccountPanel .user-actions .action .commit {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 40px;
+    width: 40px;
     font-size: 30px;
 }
 
 .AccountPanel
-.user-actions .action:last-child {
-    margin-right: 0;
+.user-actions .action
+.commit {
+    display: inline-block;
+    font-size: 21px;
+    padding-left: 10px;
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-.AccountPanel .action:hover      { color: #FFF; }
-.AccountPanel .sign-out:hover    { background: #CB4154; }
-.AccountPanel .edit:hover        { background: #2B6CC4; }
-.AccountPanel .password:hover    { background: #FFA343; }
-.AccountPanel .integration:hover { background: #3BB08F; }
+.AccountPanel .action:hover,      .AccountPanel .action.active      { color: #FFF; }
+.AccountPanel .sign-out:hover,    .AccountPanel .sign-out.active    { background: #CB4154; }
+.AccountPanel .edit:hover,        .AccountPanel .edit.active        { background: #2B6CC4; }
+.AccountPanel .password:hover,    .AccountPanel .password.active    { background: #FFA343; }
+.AccountPanel .integration:hover, .AccountPanel .integration.active { background: #3BB08F; }
 
+.AccountPanel .action.active:hover {
+    background: #9FE2BF;
+    color: #3BB08F;
+}
 
-/* Sign In Section */
-
-.AccountPanel
-.signin-section {
+.AccountPanel .cancel {
     position: absolute;
-    height: 100%;
-    width: 100%;
+    top: 3px;
+    right: 10px;
 
-    box-sizing: border-box;
-    padding-top: 20px;
-}
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 
-.AccountPanel
-.signin-title {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 35px;
-}
-
-.AccountPanel
-.title-icon {
-    display: inline-block;
-    max-height: 20px;
-}
-
-.AccountPanel
-.signin-subheading {
-    font-size: 0.7em;
-    color: #BBB;
-    width: 100%;
-    text-align: right;
-}
-
-.AccountPanel
-.signin-form {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.AccountPanel
-.signin-form .signin-input,
-.AccountPanel
-.signin-form .signin-button {
-    display: block;
-    width: 300px;
-
-    font-size: 18px;
     line-height: 30px;
-    font-family: inherit;
+    font-size: 15px;
 
-    box-sizing: border-box;
-    padding: 3px 15px;
-    margin: auto;
-    margin-bottom: 5px;
-
-    border-radius: 0px;
-    border: 1px solid #BBB;
-
-    background: #FFFFFC;
-    color: #969685;
+    background: #EE204D;
+    color: #FFF;
+}
+.AccountPanel .cancel:hover {
+    background: #FC6C85;
+    color: #EE204D;
 }
 
-.AccountPanel
-.signin-form
-.signin-button:hover {
-    color: #FFFFFC;
-    background: #969685;
+.AccountPanel .user-actions .action[disabled]
+.AccountPanel .user-actions .cancel[disabled], {
+    background: #CCC;
+    color: #BBB;
 }
 
-.AccountPanel
-.signin-form
-.signin-button:active {
-    background: #CDCDC3;
-}
 
-.AccountPanel
-.signin-message {
-    width: 300px;
-    max-height: 30px;
-    overflow: auto;
-    margin: auto;
+/* ---- Transitions ---- */
 
-    color: #CB4154;
-    font-size: 0.8em;
-    text-align: center;
-}
-
-/* always present */
 .crossfade-transition {
-  transition: all .3s ease;
-  opacity: 1;
+    transition: all .3s ease;
+    opacity: 1;
 }
-
-/* .expand-enter defines the starting state for entering */
-/* .expand-leave defines the ending state for leaving */
 .crossfade-enter, .crossfade-leave {
-  opacity: 0;
+    opacity: 0;
+    width: 0;
 }
 
 

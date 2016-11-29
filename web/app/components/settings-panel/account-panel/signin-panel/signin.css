@@ -1,0 +1,92 @@
+.LoginPanel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* Sign In Section */
+
+.AccountPanel
+.signin-section {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.AccountPanel
+.signin-title {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 35px;
+}
+
+.AccountPanel
+.title-icon {
+    display: inline-block;
+    max-height: 20px;
+}
+
+.AccountPanel
+.signin-subheading {
+    font-size: 0.7em;
+    color: #BBB;
+    width: 100%;
+    text-align: right;
+}
+
+.AccountPanel
+.signin-form {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.AccountPanel
+.signin-form .signin-input,
+.AccountPanel
+.signin-form .signin-button {
+    display: block;
+    width: 300px;
+
+    font-size: 18px;
+    line-height: 30px;
+    font-family: inherit;
+
+    box-sizing: border-box;
+    padding: 3px 15px;
+    margin: auto;
+    margin-bottom: 5px;
+
+    border-radius: 0px;
+    border: 1px solid #BBB;
+
+    background: #FFFFFC;
+    color: #969685;
+}
+
+.AccountPanel
+.signin-form
+.signin-button:hover {
+    color: #FFFFFC;
+    background: #969685;
+}
+
+.AccountPanel
+.signin-form
+.signin-button:active {
+    background: #CDCDC3;
+}
+
+.AccountPanel
+.signin-message {
+    width: 300px;
+    max-height: 30px;
+    overflow: auto;
+    margin: auto;
+
+    color: #CB4154;
+    font-size: 0.8em;
+    text-align: center;
+}

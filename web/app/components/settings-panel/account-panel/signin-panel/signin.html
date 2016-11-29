@@ -1,0 +1,13 @@
+<div class="LoginPanel">
+    <div class="signin-title">
+        <!-- <img class="title-icon" src="/images/clock.svg"/> -->
+        <span class="signin-title-text">Timesheet</span>
+        <div class="signin-subheading">Welcome</div>
+    </div>
+    <form class="signin-form" v-on:submit.prevent="sign_in">
+        <input class="signin-input" type="text"     v-model="username" placeholder="username"/>
+        <input class="signin-input" type="password" v-model="password" placeholder="password"/>
+        <button class="signin-button" type="submit">Sign In</button>
+        <div class="signin-message" v-text="result"></div>
+    </form>
+</div>

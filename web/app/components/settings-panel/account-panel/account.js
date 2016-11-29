@@ -6,6 +6,11 @@ import Vue from 'vue'
 
 import request from 'superagent'
 
+// –– App panels
+import signin_panel  from "app/components/settings-panel/account-panel/signin-panel/signin"
+import contact_panel from "app/components/settings-panel/account-panel/contact-panel/contact"
+import password_panel from "app/components/settings-panel/account-panel/password-panel/password"
+
 
 export default Vue.extend({
     template: tmpl,
@@ -14,13 +19,14 @@ export default Vue.extend({
     ],
     data() {
         return {
-            username: null,
-            password: null,
-            result: null,
+            action: null,
+            stasis: null,
         }
     },
     components: {
-
+        "signin-panel": signin_panel,
+        "contact-panel": contact_panel,
+        "password-panel": password_panel,
     },
     ready() {
         window.account_panel = this
@@ -29,22 +35,38 @@ export default Vue.extend({
         resize_panel(size) {
 
         },
-        sign_in() {
-            // send login request
-            request.post(this.settings.url+"/rpc/sign-in").withCredentials()
-                   .send({ username:this.username, password:this.password })
-                   .on('error', this.set_error)
-                   .end(this.set_user)
-        },
         sign_out() {
             request.del(this.settings.url+"/rpc/sign-in").withCredentials()
                    .end(() => this.settings.user = null)
         },
-        set_user(error, response) {
-            this.settings.user = response.body.result
+        visible_action(option) {
+            return this.action == option || this.action == null
         },
-        set_error(error, response) {
-            this.result = response.body.result
+        clear() {
+            this.action = null
+            this.stasis = null
+        },
+        prepare_action(action) {
+            this.action = action
+            this.stasis = null
+        },
+        cancel_action(action) {
+            // broadcast submit event
+            this.$broadcast("cancel_"+action, this.clear)
+        },
+        fire_action(action) {
+            // put action into stasis to disable buttons
+            this.stasis = action
+            // broadcast submit event
+            this.$broadcast("action_"+action, this.clear)
+        },
+        toggle_action(action) {
+            if(this.action != action) {
+                this.prepare_action(action)
+            }
+            else {
+                this.fire_action(action)
+            }
         },
     },
     computed: {
